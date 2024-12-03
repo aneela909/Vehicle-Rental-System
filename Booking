@@ -1,0 +1,71 @@
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+/**
+ *
+ * @author M.Farhan
+ */
+public class Booking {
+
+    private String cName;
+    private String cCnic;
+    private String cContact;
+    private String cEmail;
+    private String cAddress;
+    private String vType;
+    private String vModel;
+    private String vRegNo;
+    private String vSeatingCapacity;
+    private String bLocation;
+    private String bDestination;
+    private String bRent;
+    private String dName;
+    private String dCnic;
+
+    public Booking(String cName, String cCnic, String cContact, String cEmail, String cAddress,
+            String vType, String vModel, String vRegNo, String vSeatingCapacity,
+            String bLocation, String bDestination, String bRent,
+            String dName, String dCnic) {
+        this.cName = cName;
+        this.cCnic = cCnic;
+        this.cContact = cContact;
+        this.cEmail = cEmail;
+        this.cAddress = cAddress;
+        this.vType = vType;
+        this.vModel = vModel;
+        this.vRegNo = vRegNo;
+        this.vSeatingCapacity = vSeatingCapacity;
+        this.bLocation = bLocation;
+        this.bDestination = bDestination;
+        this.bRent = bRent;
+        this.dName = dName;
+        this.dCnic = dCnic;
+    }
+
+    public static void saveBooking(Booking booking) {
+        File file = new File("C:\\Users\\M.Farhan\\Desktop\\BookingSystemFiles\\Bookings.txt");//Bookings file path
+
+        try {
+            FileWriter fileWriter = new FileWriter(file, true);
+            BufferedWriter writer = new BufferedWriter(fileWriter); // Open in append mode
+            writer.write(booking.cName + "," + booking.cCnic + "," + booking.cContact + ","
+                    + booking.cEmail + "," + booking.cAddress + "," + booking.vType + ","
+                    + booking.vModel + "," + booking.vRegNo + "," + booking.vSeatingCapacity + ","
+                    + booking.bLocation + "," + booking.bDestination + "," + booking.bRent + ","
+                    + booking.dName + "," + booking.dCnic);
+            writer.newLine();
+            writer.close();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error while saving booking information.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+}
